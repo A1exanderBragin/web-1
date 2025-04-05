@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация подключения к серверу</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .screenshot {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .command {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Документация подключения к серверу</h1>
+
+    <div class="screenshot">
+        <div class="caption">1. Подключение по SSH к серверу kubsu-dev.ru</div>
+        <div class="command">ssh u68718@kubsu-dev.ru -p 58528</div>
+        <img src="1.png" alt="SSH подключение">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">2. Проверка доступности kubsu.ru с помощью ping</div>
+        <div class="command">ping kubsu.ru</div>
+        <img src="2.png" alt="Ping kubsu.ru">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">3. Запрос MX-записей для kubsu.ru</div>
+        <div class="command">nslookup -type=MX kubsu.ru</div>
+        <img src="3.png" alt="MX записи kubsu.ru">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">4. Запрос A-записи для kubsu.ru</div>
+        <div class="command">nslookup -type=A kubsu.ru</div>
+        <img src="4.png" alt="A запись kubsu.ru">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">5. Попытка запроса WX-записей для kubsu-dev.ru</div>
+        <div class="command">nslookup -type=WX kubsu-dev.ru</div>
+        <img src="5.png" alt="WX запись kubsu-dev.ru">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">6. Запрос A-записи для kubsu-dev.ru</div>
+        <div class="command">nslookup -type=A kubsu-dev.ru</div>
+        <img src="6.png" alt="A запись kubsu-dev.ru">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">7. WHOIS информация для kubsu.ru</div>
+        <div class="command">whois kubsu.ru</div>
+        <img src="7.png" alt="WHOIS kubsu.ru">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">8. WHOIS информация для kubsu-dev.ru</div>
+        <div class="command">whois kubsu-dev.ru</div>
+        <img src="8.png" alt="WHOIS kubsu-dev.ru">
+    </div>
+
+    <div class="screenshot">
+        <div class="caption">9. Генерация SSH-ключей на сервере</div>
+        <div class="command">ssh-keygen</div>
+        <img src="9.png" alt="Генерация SSH ключей">
+    </div>
+</body>
+</html>
