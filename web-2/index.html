@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа: HTTP-запросы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .task {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+        .screenshot {
+            background: #f9f9f9;
+            padding: 15px;
+        }
+        .comment {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Выполнение заданий по HTTP-запросам</h1>
+    
+    <!-- Задание 1 -->
+    <div class="task">
+        <h2>Задание 1: GET главной страницы (HTTP/1.0)</h2>
+        <p>Получить главную страницу методом GET в протоколе HTTP 1.0.</p>
+        <div class="screenshot">
+            <img src="1.png" alt="Скриншот задания 1">
+        </div>
+    </div>
 
+    <!-- Задание 2 -->
+    <div class="task">
+        <h2>Задание 2: GET внутренней страницы (HTTP/1.1)</h2>
+        <p>Получить внутреннюю страницу методом GET в протоколе HTTP 1.1.</p>
+        <div class="screenshot">
+            <img src="2.png" alt="Скриншот задания 2">
+        </div>
+    </div>
+
+    <!-- Задание 3 -->
+    <div class="task">
+        <h2>Задание 3: Размер файла file.tar.gz</h2>
+        <p>Определить размер файла file.tar.gz, не скачивая его (используя HEAD-запрос).</p>
+        <div class="screenshot">
+            <img src="3.png" alt="Скриншот задания 3">
+            <p class="comment">Content-Length: 11335 байт</p>
+        </div>
+    </div>
+
+    <!-- Задание 4 -->
+    <div class="task">
+        <h2>Задание 4: Медиатип image.png</h2>
+        <p>Определить медиатип ресурса /image.png через HEAD-запрос.</p>
+        <div class="screenshot">
+            <img src="4.png" alt="Скриншот задания 4">
+            <p class="comment">Content-Type: image/png</p>
+        </div>
+    </div>
+
+    <!-- Задание 5 -->
+    <div class="task" style="border-color: #e74c3c;">
+        <h2>Задание 5: Отправка комментария (POST)</h2>
+        <p>Отправить комментарий на сервер по адресу /index.php методом POST.</p>
+        <div class="screenshot">
+            <img src="5.png" alt="Скриншот задания 5">
+            <p class="comment">Пример POST-запроса с комментарием.</p>
+        </div>
+    </div>
+
+    <!-- Задание 6 -->
+    <div class="task">
+        <h2>Задание 6: Первые 100 байт файла</h2>
+        <p>Получить первые 100 байт файла /file.tar.gz с использованием заголовка Range.</p>
+        <div class="screenshot">
+            <img src="6.png" alt="Скриншот задания 6">
+            <p class="comment">Content-Range: bytes 0-99/11335</p>
+        </div>
+    </div>
+
+    <!-- Задание 7 -->
+    <div class="task">
+        <h2>Задание 7: Кодировка index.php</h2>
+        <p>Определить кодировку ресурса /index.php.</p>
+        <div class="screenshot">
+            <img src="7.png" alt="Скриншот задания 7">
+            <p class="comment">Content-Type: text/html; charset=UTF-8</p>
+        </div>
+    </div>
+</body>
+</html>
