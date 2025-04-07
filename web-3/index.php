@@ -69,8 +69,8 @@ function validate_form($data) {
   return $errors;
 }
 
-$user = 'u68691'; 
-$password = '9388506'; 
+$user = 'u68718'; 
+$password = '6252232'; 
 $pdo = new PDO('mysql:host=localhost;dbname=u68691', $user, $password,
   [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]); 
 
