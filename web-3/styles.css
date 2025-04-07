@@ -1,142 +1,154 @@
 /* Основные стили */
 body {
   margin: 0;
-  padding: 0;
+  padding: 20px;
   font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #495057;
+  line-height: 1.5;
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Контейнер формы */
-#hform {
+.form-container {
   background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 90%;
-  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px 0;
 }
 
-/* Заголовок формы */
-#hform h2 {
-  color: #2c3e50;
+.form-container h2 {
+  color: #495057;
+  font-size: 1.5rem;
   text-align: center;
-  margin-bottom: 25px;
-  font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 
 /* Группы полей формы */
-#hform div {
-  margin-bottom: 20px;
+.form-group {
+  margin-bottom: 1rem;
 }
 
 /* Метки полей */
-#hform label {
+label {
   display: block;
-  margin-bottom: 8px;
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #444;
 }
 
 /* Текстовые поля ввода */
-#hform input[type="text"],
-#hform input[type="tel"],
-#hform input[type="email"],
-#hform input[type="date"],
-#hform textarea,
-#hform select {
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: border-color 0.3s;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  background-color: #f8f9fa;
+  transition: border-color 0.15s;
 }
 
-#hform input:focus,
-#hform textarea:focus,
-#hform select:focus {
-  border-color: #3498db;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #adb5bd;
   outline: none;
+  background-color: white;
 }
 
 /* Радио кнопки */
-#hform input[type="radio"] {
-  margin-right: 8px;
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
-#hform input[type="radio"] + label {
-  display: inline-block;
-  margin-right: 20px;
+.radio-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: normal;
+  cursor: pointer;
 }
 
 /* Чекбокс */
-#hform input[type="checkbox"] {
-  margin-right: 8px;
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  cursor: pointer;
 }
 
 /* Выпадающий список */
-#hform select {
+select {
   height: auto;
-  min-height: 120px;
+  min-height: 100px;
+}
+
+select[multiple] option {
+  padding: 0.5rem;
 }
 
 /* Кнопка отправки */
-#hform button {
-  background-color: #3498db;
+.submit-btn {
+  background-color: #6c757d;
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: 0.625rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s;
+  transition: background-color 0.15s;
+  margin-top: 0.5rem;
 }
 
-#hform button:hover {
-  background-color: #2980b9;
+.submit-btn:hover {
+  background-color: #5a6268;
 }
 
 /* Сообщения об ошибках */
 .error {
-  color: #e74c3c;
-  font-size: 14px;
-  margin-top: 5px;
+  color: #dc3545;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
   display: block;
 }
 
+/* Строка формы (для расположения в ряд) */
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.half-width {
+  flex: 1;
+}
+
 /* Адаптивность */
-@media (max-width: 500px) {
-  #hform {
-    padding: 20px;
-    width: 95%;
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
   }
   
-  #hform select {
-    min-height: 100px;
+  .half-width {
+    width: 100%;
   }
-}
-
-/* Специальные стили для multiple select */
-#hform select[multiple] {
-  background-image: none;
-  padding-right: 10px;
-}
-
-#hform select[multiple] option {
-  padding: 8px;
-  margin: 4px 0;
-}
-
-/* Стиль для выбранных элементов в multiple select */
-#hform select[multiple] option:checked {
-  background-color: #3498db;
-  color: white;
 }
