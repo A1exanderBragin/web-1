@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрационная форма - Отчет</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .screenshot {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .screenshot img {
+            max-width: 100%;
+            border: 1px solid #eee;
+        }
+        .description {
+            background: #e8f4f8;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Регистрационная форма с сохранением в БД</h1>
+    
+    <div class="screenshot">
+        <h2>1. Подключение к серверу</h2>
+        <img src="1.png" alt="Подключение по SSH">
+        <div class="description">
+            Успешное подключение к серверу kubsu-dev.ru через SSH на порту 58528.
+            Видна информация о системе (Ubuntu 24.04) и приглашение MySQL.
+        </div>
+    </div>
+
+    <div class="screenshot">
+        <h2>2. Создание структуры БД</h2>
+        <img src="2.png" alt="Создание таблиц">
+        <div class="description">
+            Создание таблиц в MySQL:
+            <ul>
+                <li>users - для хранения данных пользователей</li>
+                <li>langs - справочник языков программирования</li>
+                <li>users_languages - связь многие-ко-многим</li>
+            </ul>
+            Вставка 12 языков программирования.
+        </div>
+    </div>
+
+    <div class="screenshot">
+        <h2>3. Модификация таблицы</h2>
+        <img src="3.png" alt="ALTER TABLE">
+        <div class="description">
+            Изменение таблицы users_languages - добавление ON DELETE CASCADE
+            для автоматического удаления связей при удалении пользователя.
+        </div>
+    </div>
+
+    <div class="screenshot">
+        <h2>4. Пример заполненной формы</h2>
+        <img src="4.png" alt="Заполненная форма">
+        <div class="description">
+            Тестовая заполненная форма с данными:
+            <ul>
+                <li>ФИО: AB</li>
+                <li>Телефон: +7</li>
+                <li>Email: AB@mail.ru</li>
+                <li>Дата рождения: 25.12.2004</li>
+                <li>Выбранные языки: PHP, Python, Java, Haskell</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="screenshot">
+        <h2>5. Данные в БД</h2>
+        <img src="5.png" alt="Данные в базе">
+        <div class="description">
+            Результаты SQL-запросов:
+            <ul>
+                <li>3 тестовые записи в таблице users</li>
+                <li>Связи с языками программирования</li>
+                <li>Демонстрация работы автоинкремента</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Техническая реализация</h2>
+    <p>Форма реализована на HTML+CSS, обработчик на PHP с использованием MySQL. База данных соответствует 3НФ.</p>
+</body>
+</html>
