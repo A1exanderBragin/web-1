@@ -7,69 +7,54 @@
   --border-color: #dee2e6;
   --error-color: #dc3545;
   --white: #ffffff;
-  --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --transition: all 0.2s ease;
 }
 
-/* Базовые стили */
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-html {
+* {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  padding: 2rem;
+  padding: 1rem;
   font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
   background-color: var(--background);
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.5;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-/* Контейнер формы */
 .form-container {
   background-color: var(--white);
-  border-radius: 0.625rem;
+  border-radius: 8px;
   box-shadow: var(--shadow);
-  padding: 2rem;
+  padding: 1.5rem;
   width: 100%;
-  max-width: 34.375rem;
-  margin: 1rem 0;
+  max-width: 480px;
 }
 
 .form-container h2 {
-  color: var(--text-color);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+  margin: 0 0 1.25rem 0;
+  color: var(--text-color);
 }
 
-/* Группы полей формы */
 .form-group {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
-/* Метки полей */
 label {
   display: block;
+  font-size: 0.875rem;
+  margin-bottom: 0.375rem;
   color: var(--text-secondary);
-  font-size: 0.9375rem;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
 }
 
-/* Поля ввода */
 input[type="text"],
 input[type="tel"],
 input[type="email"],
@@ -77,150 +62,81 @@ input[type="date"],
 textarea,
 select {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
   border: 1px solid var(--border-color);
-  border-radius: 0.375rem;
-  font-size: 0.9375rem;
+  border-radius: 4px;
   background-color: var(--white);
   transition: var(--transition);
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.15);
+select {
+  min-height: 100px;
 }
 
-/* Радио кнопки */
 .radio-group {
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   margin-top: 0.5rem;
 }
 
 .radio-group label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 400;
-  cursor: pointer;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
 }
 
-/* Чекбокс */
 .checkbox-group {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.checkbox-group label {
-  margin-bottom: 0;
-  cursor: pointer;
-  font-size: 0.9375rem;
-}
-
-/* Выпадающий список */
-select {
-  height: auto;
-  min-height: 7.5rem;
-}
-
-select[multiple] option {
-  padding: 0.5rem;
-  margin: 0.125rem 0;
-}
-
-/* Кнопка */
 .submit-btn {
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  padding: 0.875rem 1.5rem;
-  border-radius: 0.375rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
   width: 100%;
+  padding: 0.625rem;
+  font-size: 0.875rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   transition: var(--transition);
-  margin-top: 1rem;
-  letter-spacing: 0.03125rem;
+  margin-top: 0.5rem;
 }
 
-.submit-btn:hover,
-.submit-btn:focus {
+.submit-btn:hover {
   background-color: var(--primary-hover);
-  transform: translateY(-0.125rem);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
-/* Сообщения об ошибках */
 .error {
+  font-size: 0.75rem;
   color: var(--error-color);
-  font-size: 0.8125rem;
-  margin-top: 0.375rem;
-  display: block;
+  margin-top: 0.25rem;
 }
 
-/* Строка формы */
 .form-row {
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .half-width {
   flex: 1;
 }
 
-/* Адаптивность */
-@media (max-width: 36rem) {
-  body {
-    padding: 1.25rem;
-    align-items: flex-start;
-  }
-  
-  .form-container {
-    padding: 1.5rem;
-  }
-  
+@media (max-width: 480px) {
   .form-row {
     flex-direction: column;
     gap: 0;
   }
-}
-
-/* Стили для select */
-select[multiple] option:checked {
-  background-color: var(--primary-color);
-  color: var(--white);
-}
-
-/* Кастомизация скроллбара */
-select[multiple]::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-select[multiple]::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 0.25rem;
-}
-
-select[multiple]::-webkit-scrollbar-thumb {
-  background: #c4c4c4;
-  border-radius: 0.25rem;
-}
-
-select[multiple]::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* Улучшение доступности */
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+  
+  body {
+    padding: 0.75rem;
+    align-items: flex-start;
+  }
+  
+  .form-container {
+    padding: 1.25rem;
+  }
 }
