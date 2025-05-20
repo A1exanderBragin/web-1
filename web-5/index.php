@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$dsn = 'mysql:host=localhost;dbname=u68860;charset=utf8';
-$username = 'u68860';
-$password = '8500150';
+$dsn = 'mysql:host=localhost;dbname=u68718;charset=utf8';
+$username = 'u68718';
+$password = '6252232';
 try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,11 +21,11 @@ unset($_SESSION['form_values']);
 
 // Если пользователь авторизован, загружаем его данные
 if (isset($_SESSION['user_id'])) {
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT * FROM users5 WHERE id = ?");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    $stmt = $pdo->prepare("SELECT pl.name FROM user_languages ul JOIN programming_languages pl ON ul.language_id = pl.id WHERE ul.user_id = ?");
+    $stmt = $pdo->prepare("SELECT pl.name FROM user_languages5 ul JOIN programming_languages5 pl ON ul.language_id = pl.id WHERE ul.user_id = ?");
     $stmt->execute([$_SESSION['user_id']]);
     $user_languages = $stmt->fetchAll(PDO::FETCH_COLUMN);
     
