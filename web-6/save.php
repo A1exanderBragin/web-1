@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$dsn = 'mysql:host=localhost;dbname=u68860;charset=utf8';
-$username = 'u68860';
-$password = '8500150';
+$dsn = 'mysql:host=localhost;dbname=u68718;charset=utf8';
+$username = 'u68718';
+$password = '6252232';
 try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -31,7 +31,7 @@ if ($action === 'login') {
             $errors['role'] = 'Выберите корректную роль';
         } else {
             if ($role === 'user') {
-                $stmt = $pdo->prepare("SELECT id, password_hash FROM users WHERE login = ?");
+                $stmt = $pdo->prepare("SELECT id, password_hash FROM users6 WHERE login = ?");
                 $stmt->execute([$login]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 
@@ -44,7 +44,7 @@ if ($action === 'login') {
                     $errors['auth'] = 'Неверный логин или пароль пользователя';
                 }
             } elseif ($role === 'admin') {
-                $stmt = $pdo->prepare("SELECT id, password_hash FROM admins WHERE login = ?");
+                $stmt = $pdo->prepare("SELECT id, password_hash FROM admins6 WHERE login = ?");
                 $stmt->execute([$login]);
                 $admin = $stmt->fetch(PDO::FETCH_ASSOC);
                 
@@ -102,13 +102,13 @@ if ($action === 'login') {
             $password_hash = password_hash($raw_password, PASSWORD_DEFAULT);
             
             // Сохранение пользователя
-            $stmt = $pdo->prepare("INSERT INTO users (fio, phone, email, birthdate, gender, bio, contract, login, password_hash) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO users6 (fio, phone, email, birthdate, gender, bio, contract, login, password_hash) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([trim($values['fio']), trim($values['phone']), trim($values['email']), $values['birthdate'], $values['gender'], trim($values['bio']), 1, $login, $password_hash]);
             $user_id = $pdo->lastInsertId();
             
             // Сохранение языков
-            $stmt = $pdo->prepare("SELECT id FROM programming_languages WHERE name = ?");
-            $insert = $pdo->prepare("INSERT INTO user_languages (user_id, language_id) VALUES (?, ?)");
+            $stmt = $pdo->prepare("SELECT id FROM programming_languages6 WHERE name = ?");
+            $insert = $pdo->prepare("INSERT INTO user_languages6 (user_id, language_id) VALUES (?, ?)");
             foreach ($languages as $language) {
                 $stmt->execute([$language]);
                 $lang_id = $stmt->fetchColumn();
@@ -162,13 +162,13 @@ if ($action === 'login') {
     if (empty($errors)) {
         try {
             // Обновление данных пользователя
-            $stmt = $pdo->prepare("UPDATE users SET fio = ?, phone = ?, email = ?, birthdate = ?, gender = ?, bio = ?, contract = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE users6 SET fio = ?, phone = ?, email = ?, birthdate = ?, gender = ?, bio = ?, contract = ? WHERE id = ?");
             $stmt->execute([trim($values['fio']), trim($values['phone']), trim($values['email']), $values['birthdate'], $values['gender'], trim($values['bio']), 1, $_SESSION['user_id']]);
             
             // Обновление языков
-            $pdo->prepare("DELETE FROM user_languages WHERE user_id = ?")->execute([$_SESSION['user_id']]);
-            $stmt = $pdo->prepare("SELECT id FROM programming_languages WHERE name = ?");
-            $insert = $pdo->prepare("INSERT INTO user_languages (user_id, language_id) VALUES (?, ?)");
+            $pdo->prepare("DELETE FROM user_languages6 WHERE user_id = ?")->execute([$_SESSION['user_id']]);
+            $stmt = $pdo->prepare("SELECT id FROM programming_languages6 WHERE name = ?");
+            $insert = $pdo->prepare("INSERT INTO user_languages6 (user_id, language_id) VALUES (?, ?)");
             foreach ($languages as $language) {
                 $stmt->execute([$language]);
                 $lang_id = $stmt->fetchColumn();
