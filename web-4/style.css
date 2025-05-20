@@ -3,13 +3,13 @@ body {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #252525;
-    color: #e8e8e8;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
 h1 {
     text-align: center;
-    color: #e8e8e8;
+    color: #444;
     font-weight: 700;
 }
 
@@ -23,6 +23,7 @@ h1 {
     display: block;
     margin-bottom: 5px;
     text-align: center;
+    color: #555;
 }
 
 /* Поля ввода */
@@ -30,12 +31,12 @@ h1 {
     position: relative;
     width: 100%;
     margin: 0 auto;
-    --accent-color: #a3e583;
+    --accent-color: #6c757d;
 }
 
 .textInputWrapper:before {
     transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .textInputWrapper:before,
@@ -70,21 +71,21 @@ h1 {
     transition: opacity 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     opacity: 1;
     user-select: none;
-    color: rgba(255, 255, 255, 0.582);
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .textInput {
     border-radius: 5px 5px 0px 0px;
-    box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+    box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
     max-height: 36px;
-    background-color: #353535;
+    background-color: #fff;
     transition: background-color 200ms cubic-bezier(0.25, 0.8, 0.25, 1);
-    color: #e8e8e8;
+    color: #333;
     font-size: 14px;
     font-weight: 500;
     padding: 12px;
     width: 100%;
-    border: none;
+    border: 1px solid #ddd;
 }
 
 textarea.textInput {
@@ -95,7 +96,8 @@ textarea.textInput {
 .textInput:focus,
 .textInput:active {
     outline: none;
-    background-color: #454545;
+    background-color: #f8f9fa;
+    border-color: #6c757d;
 }
 
 .textInputWrapper:focus-within .textInput::placeholder {
@@ -121,6 +123,7 @@ textarea.textInput {
 .radio-group label {
     display: inline;
     margin: 0;
+    color: #555;
 }
 
 /* Чекбокс */
@@ -133,7 +136,7 @@ textarea.textInput {
 
 .checkbox-label {
     font-weight: 700;
-    color: #e8e8e8;
+    color: #555;
 }
 
 .custom-checkbox {
@@ -148,7 +151,7 @@ textarea.textInput {
     cursor: pointer;
     height: 24px;
     width: 24px;
-    z-index: 2; /* Убедитесь, что input выше .checkmark */
+    z-index: 2;
 }
 
 .checkmark {
@@ -157,13 +160,15 @@ textarea.textInput {
     left: 0;
     height: 24px;
     width: 24px;
-    background-color: #ccc;
+    background-color: #e9ecef;
     border-radius: 4px;
-    z-index: 1; /* Убедитесь, что .checkmark ниже input */
+    z-index: 1;
+    border: 1px solid #ced4da;
 }
 
 .custom-checkbox input:checked ~ .checkmark {
-    background-color: #0B6E4F;
+    background-color: #6c757d;
+    border-color: #6c757d;
 }
 
 .checkmark:after {
@@ -188,8 +193,8 @@ button {
     padding: 0.1em 0.25em;
     width: 13em;
     height: 4.2em;
-    background-color: #212121;
-    border: 0.08em solid #fff;
+    background-color: #f8f9fa;
+    border: 0.08em solid #6c757d;
     border-radius: 0.3em;
     font-size: 12px;
     cursor: pointer;
@@ -205,18 +210,19 @@ button span {
     bottom: 0.4em;
     width: 8.25em;
     height: 2.5em;
-    background-color: #212121;
+    background-color: #f8f9fa;
     border-radius: 0.2em;
     font-size: 1.5em;
-    color: #fff;
-    border: 0.08em solid #fff;
-    box-shadow: 0 0.4em 0.1em 0.019em #fff;
+    color: #495057;
+    border: 0.08em solid #6c757d;
+    box-shadow: 0 0.4em 0.1em 0.019em rgba(108, 117, 125, 0.3);
 }
 
 button span:hover {
     transition: all 0.5s;
     transform: translate(0, 0.4em);
-    box-shadow: 0 0 0 0 #fff;
+    box-shadow: 0 0 0 0 rgba(108, 117, 125, 0.3);
+    background-color: #e9ecef;
 }
 
 button span:not(:hover) {
@@ -228,22 +234,24 @@ select {
     width: 100%;
     padding: 12px;
     border-radius: 5px;
-    background-color: #353535;
-    color: #e8e8e8;
+    background-color: #fff;
+    color: #495057;
     font-size: 14px;
-    border: none;
-    box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+    border: 1px solid #ced4da;
+    box-shadow: 0px 2px 5px rgb(0 0 0 / 10%);
 }
 
 select:focus {
     outline: none;
-    background-color: #454545;
+    background-color: #f8f9fa;
+    border-color: #6c757d;
 }
 
 /* Ошибки и успех */
 .error-box {
-    color: #ff5555;
-    border: 1px solid #ff5552;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    background-color: #f8d7da;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
@@ -251,8 +259,9 @@ select:focus {
 }
 
 .success-box {
-    color: #22cc3f;
-    border: 1px solid #22cc3f;
+    color: #28a745;
+    border: 1px solid #28a745;
+    background-color: #d4edda;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
@@ -260,11 +269,11 @@ select:focus {
 }
 
 .error-field {
-    border: 2px solid #ff5555 !important;
+    border: 2px solid #dc3545 !important;
 }
 
 .error {
-    color: #ff5555;
+    color: #dc3545;
     font-size: 0.9em;
     display: block;
     margin-top: 5px;
