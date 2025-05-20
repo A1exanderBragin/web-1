@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$dsn = 'mysql:host=localhost;dbname=u68860;charset=utf8';
-$username = 'u68860';
-$password = '8500150';
+$dsn = 'mysql:host=localhost;dbname=u68718;charset=utf8';
+$username = 'u68718';
+$password = '6252232';
 try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -56,12 +56,12 @@ if (!empty($errors)) {
 }
 
 try {
-    $stmt = $pdo->prepare("INSERT INTO users (fio, phone, email, birthdate, gender, bio, contract) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO users4 (fio, phone, email, birthdate, gender, bio, contract) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([trim($data['fio']), trim($data['phone']), trim($data['email']), $data['birthdate'], $data['gender'], trim($data['bio']), 1]);
     $user_id = $pdo->lastInsertId();
 
-    $stmt = $pdo->prepare("SELECT id FROM programming_languages WHERE name = ?");
-    $insert = $pdo->prepare("INSERT INTO user_languages (user_id, language_id) VALUES (?, ?)");
+    $stmt = $pdo->prepare("SELECT id FROM programming_languages4 WHERE name = ?");
+    $insert = $pdo->prepare("INSERT INTO user_languages4 (user_id, language_id) VALUES (?, ?)");
     foreach ($languages as $language) {
         $stmt->execute([$language]);
         $lang_id = $stmt->fetchColumn();
