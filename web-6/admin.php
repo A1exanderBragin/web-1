@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$dsn = 'mysql:host=localhost;dbname=u68860;charset=utf8';
-$username = 'u68860';
-$password = '8500150';
+$dsn = 'mysql:host=localhost;dbname=u68718;charset=utf8';
+$username = 'u68718';
+$password = '6252232';
 
 try {
     $pdo = new PDO($dsn, $username, $password);
@@ -25,8 +25,8 @@ $user_id = $_GET['id'] ?? null;
 if ($action === 'delete' && $user_id) {
     try {
         $pdo->beginTransaction();
-        $pdo->prepare("DELETE FROM user_languages WHERE user_id = ?")->execute([$user_id]);
-        $pdo->prepare("DELETE FROM users WHERE id = ?")->execute([$user_id]);
+        $pdo->prepare("DELETE FROM user_languages6 WHERE user_id = ?")->execute([$user_id]);
+        $pdo->prepare("DELETE FROM users6 WHERE id = ?")->execute([$user_id]);
         $pdo->commit();
         header('Location: admin.php?success=deleted');
         exit;
@@ -78,12 +78,12 @@ if ($action === 'edit' && $user_id && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         try {
             $pdo->beginTransaction();
-            $stmt = $pdo->prepare("UPDATE users SET fio = ?, phone = ?, email = ?, birthdate = ?, gender = ?, bio = ?, contract = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE users6 SET fio = ?, phone = ?, email = ?, birthdate = ?, gender = ?, bio = ?, contract = ? WHERE id = ?");
             $stmt->execute([trim($values['fio']), trim($values['phone']), trim($values['email']), $values['birthdate'], $values['gender'], trim($values['bio']), 1, $user_id]);
 
-            $pdo->prepare("DELETE FROM user_languages WHERE user_id = ?")->execute([$user_id]);
-            $stmt = $pdo->prepare("SELECT id FROM programming_languages WHERE name = ?");
-            $insert = $pdo->prepare("INSERT INTO user_languages (user_id, language_id) VALUES (?, ?)");
+            $pdo->prepare("DELETE FROM user_languages6 WHERE user_id = ?")->execute([$user_id]);
+            $stmt = $pdo->prepare("SELECT id FROM programming_languages6 WHERE name = ?");
+            $insert = $pdo->prepare("INSERT INTO user_languages6 (user_id, language_id) VALUES (?, ?)");
             foreach ($languages as $language) {
                 $stmt->execute([$language]);
                 $lang_id = $stmt->fetchColumn();
@@ -106,28 +106,28 @@ if ($action === 'edit' && $user_id && $_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Получение всех пользователей
-$users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users6")->fetchAll(PDO::FETCH_ASSOC);
 foreach ($users as &$user) {
-    $stmt = $pdo->prepare("SELECT pl.name FROM user_languages ul JOIN programming_languages pl ON ul.language_id = pl.id WHERE ul.user_id = ?");
+    $stmt = $pdo->prepare("SELECT pl.name FROM user_languages6 ul JOIN programming_languages6 pl ON ul.language_id = pl.id WHERE ul.user_id = ?");
     $stmt->execute([$user['id']]);
     $user['languages'] = $stmt->fetchAll(PDO::FETCH_COLUMN);
 }
 
 // Получение статистики
 $stats = $pdo->query("SELECT pl.name, COUNT(ul.user_id) as count 
-                      FROM programming_languages pl 
-                      LEFT JOIN user_languages ul ON pl.id = ul.language_id 
+                      FROM programming_languages6 pl 
+                      LEFT JOIN user_languages6 ul ON pl.id = ul.language_id 
                       GROUP BY pl.id, pl.name")->fetchAll(PDO::FETCH_ASSOC);
 
 // Получение данных пользователя для редактирования
 $edit_user = null;
 $edit_languages = [];
 if ($action === 'edit' && $user_id) {
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT * FROM users6 WHERE id = ?");
     $stmt->execute([$user_id]);
     $edit_user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $stmt = $pdo->prepare("SELECT pl.name FROM user_languages ul JOIN programming_languages pl ON ul.language_id = pl.id WHERE ul.user_id = ?");
+    $stmt = $pdo->prepare("SELECT pl.name FROM user_languages6 ul JOIN programming_languages6 pl ON ul.language_id = pl.id WHERE ul.user_id = ?");
     $stmt->execute([$user_id]);
     $edit_languages = $stmt->fetchAll(PDO::FETCH_COLUMN);
 }
